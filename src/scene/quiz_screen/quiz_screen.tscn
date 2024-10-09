@@ -54,3 +54,14 @@ offset_bottom = 319.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget libero ullamcorper, dignissim nunc ut, euismod purus. Sed vitae nulla ipsum. Aliquam magna lorem, eleifend tristique quam ut, tristique condimentum dolor. Duis at accumsan ligula. Etiam eu egestas lorem, quis faucibus lectus. Aliquam ac vehicula ipsum, egestas aliquet ligula. Morbi. "
 scroll_active = false
 autowrap_mode = 2
+
+[node name="Next" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 1031.0
+offset_top = 481.0
+offset_right = 1142.0
+offset_bottom = 521.0
+text = "Buttons.Next
+"

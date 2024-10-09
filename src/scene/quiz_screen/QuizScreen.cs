@@ -4,7 +4,7 @@ using System;
 
 public partial class QuizScreen : Control
 {
-    public Button OptionA, OptionB, OptionC, OptionD;
+    public Button OptionA, OptionB, OptionC, OptionD, Next;
     public static RichTextLabel Question {get; private set;}
     private int _Current = 0;
 
@@ -14,6 +14,7 @@ public partial class QuizScreen : Control
         OptionB = GetNode<Button>("%OptionB");
         OptionC = GetNode<Button>("%OptionC");
         OptionD = GetNode<Button>("%OptionD");
+        Next = GetNode<Button>("%Next");
 
         Question = GetNode<RichTextLabel>("%Question");
 
@@ -21,14 +22,13 @@ public partial class QuizScreen : Control
         OptionB.Pressed += OptionBPressed;
         OptionC.Pressed += OptionCPressed;
         OptionD.Pressed += OptionDPressed;
-
+        Next.Pressed += NextPressed;
         QuestionsDeserialize QuestionFile = await QuizGame.Helpers.Json.LoadToFile<QuestionsDeserialize>("res://test.json",true);
 
         Quiz.ClearQuestions();
         foreach (var item in QuestionFile.Data)
         {
             Quiz.Questions.Add(item.Value);
-            GD.PushError("kurwa");
         }
 
         Quiz.ShowQuestion(this,_Current);
@@ -58,28 +58,48 @@ public partial class QuizScreen : Control
         OptionD.Visible = false;
     }
 
-
+    //Signals Handlers
+    public void NextPressed ()
+    {
+        _Current++;
+        UnlockButtons();
+        Quiz.ShowQuestion(this,_Current);
+        Next.Visible = false;
+    }
     public void OptionAPressed ()
     {
+        OptionPressed();
         Quiz.ShowResults(EAnswerField.A,_Current);
         LockButtons();
     }
 
     public void OptionBPressed ()
     {
+        OptionPressed();
         Quiz.ShowResults(EAnswerField.B,_Current);
         LockButtons();
     }
 
     public void OptionCPressed ()
     {
+        OptionPressed();
         Quiz.ShowResults(EAnswerField.C,_Current);
         LockButtons();
     }
 
-        public void OptionDPressed ()
+    public void OptionDPressed ()
     {
+        OptionPressed();
         Quiz.ShowResults(EAnswerField.D,_Current);
         LockButtons();
+    }
+
+    public void OptionPressed () //for every button press
+    {
+        if (!Answers.isLastQuestion(_Current))
+        {
+            Next.Visible = true;
+            return;
+        }
     }
 }

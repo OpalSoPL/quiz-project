@@ -47,7 +47,7 @@ public static class Quiz
             return true;
         }
 
-        QuizScreen.Question.Text = $"answer.{Answers.getCorrectAnswer(currentQuestion)}";
+        QuizScreen.Question.Text = $"answer.{Answers.GetCorrectAnswer(currentQuestion)}";
         //todo trigger wrong answer particles
         return false;
     }
