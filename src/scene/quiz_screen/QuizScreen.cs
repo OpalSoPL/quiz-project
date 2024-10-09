@@ -1,43 +1,61 @@
 using Godot;
+using QuizGame.Helpers;
 using System;
 
 public partial class QuizScreen : Control
 {
-    private Button _OptionA, _OptionB, _OptionC, _OptionD;
+    public Button OptionA, OptionB, OptionC, OptionD;
     public static RichTextLabel Question {get; private set;}
-    private uint _Current = 0;
+    private int _Current = 0;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
-        _OptionA = GetNode<Button>("%OptionA");
-        _OptionB = GetNode<Button>("%OptionB");
-        _OptionC = GetNode<Button>("%OptionC");
-        _OptionD = GetNode<Button>("%OptionD");
+        OptionA = GetNode<Button>("%OptionA");
+        OptionB = GetNode<Button>("%OptionB");
+        OptionC = GetNode<Button>("%OptionC");
+        OptionD = GetNode<Button>("%OptionD");
 
         Question = GetNode<RichTextLabel>("%Question");
 
-        _OptionA.Pressed += OptionAPressed;
-        _OptionB.Pressed += OptionBPressed;
-        _OptionC.Pressed += OptionCPressed;
-        _OptionD.Pressed += OptionDPressed;
+        OptionA.Pressed += OptionAPressed;
+        OptionB.Pressed += OptionBPressed;
+        OptionC.Pressed += OptionCPressed;
+        OptionD.Pressed += OptionDPressed;
 
-        var quizInstance = new Quiz(); //temporal
+        QuestionsDeserialize QuestionFile = await QuizGame.Helpers.Json.LoadToFile<QuestionsDeserialize>("res://test.json",true);
+
+        Quiz.ClearQuestions();
+        foreach (var item in QuestionFile.Data)
+        {
+            Quiz.Questions.Add(item.Value);
+            GD.PushError("kurwa");
+        }
+
+        Quiz.ShowQuestion(this,_Current);
     }
 
     public void LockButtons ()
     {
-        _OptionA.Disabled = true;
-        _OptionB.Disabled = true;
-        _OptionC.Disabled = true;
-        _OptionD.Disabled = true;
+        OptionA.Disabled = true;
+        OptionB.Disabled = true;
+        OptionC.Disabled = true;
+        OptionD.Disabled = true;
     }
 
     public void UnlockButtons ()
     {
-        _OptionA.Disabled = false;
-        _OptionB.Disabled = false;
-        _OptionC.Disabled = false;
-        _OptionD.Disabled = false;
+        OptionA.Disabled = false;
+        OptionB.Disabled = false;
+        OptionC.Disabled = false;
+        OptionD.Disabled = false;
+    }
+
+    public void HideAll()
+    {
+        OptionA.Visible = false;
+        OptionB.Visible = false;
+        OptionC.Visible = false;
+        OptionD.Visible = false;
     }
 
 
