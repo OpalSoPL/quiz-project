@@ -34,72 +34,42 @@ public partial class QuizScreen : Control
         Quiz.ShowQuestion(this,_Current);
     }
 
-    public void LockButtons ()
+    public void SetButtonsState (bool disable)
     {
-        OptionA.Disabled = true;
-        OptionB.Disabled = true;
-        OptionC.Disabled = true;
-        OptionD.Disabled = true;
+        OptionA.Disabled = disable;
+        OptionB.Disabled = disable;
+        OptionC.Disabled = disable;
+        OptionD.Disabled = disable;
     }
 
-    public void UnlockButtons ()
+    public void ChangeVisibility(bool Visible)
     {
-        OptionA.Disabled = false;
-        OptionB.Disabled = false;
-        OptionC.Disabled = false;
-        OptionD.Disabled = false;
+        OptionA.Visible = Visible;
+        OptionB.Visible = Visible;
+        OptionC.Visible = Visible;
+        OptionD.Visible = Visible;
     }
 
-    public void HideAll()
+    public void OptionHandler(EAnswerField Answer)
     {
-        OptionA.Visible = false;
-        OptionB.Visible = false;
-        OptionC.Visible = false;
-        OptionD.Visible = false;
+        if (!Answers.isLastQuestion(_Current))
+        {
+            Next.Visible = true;
+        }
+        Quiz.ShowResults(Answer,_Current);
+        SetButtonsState(true);
     }
 
     //Signals Handlers
     public void NextPressed ()
     {
         _Current++;
-        UnlockButtons();
+        SetButtonsState(false);
         Quiz.ShowQuestion(this,_Current);
         Next.Visible = false;
     }
-    public void OptionAPressed ()
-    {
-        OptionPressed();
-        Quiz.ShowResults(EAnswerField.A,_Current);
-        LockButtons();
-    }
-
-    public void OptionBPressed ()
-    {
-        OptionPressed();
-        Quiz.ShowResults(EAnswerField.B,_Current);
-        LockButtons();
-    }
-
-    public void OptionCPressed ()
-    {
-        OptionPressed();
-        Quiz.ShowResults(EAnswerField.C,_Current);
-        LockButtons();
-    }
-
-    public void OptionDPressed ()
-    {
-        OptionPressed();
-        Quiz.ShowResults(EAnswerField.D,_Current);
-        LockButtons();
-    }
-
-    public void OptionPressed () //for every button press
-    {
-        if (!Answers.isLastQuestion(_Current))
-        {
-            Next.Visible = true;
-            return;
-        }
-    }
+    public void OptionAPressed () => OptionHandler(EAnswerField.A);
+    public void OptionBPressed () => OptionHandler(EAnswerField.B);
+    public void OptionCPressed () => OptionHandler(EAnswerField.C);
+    public void OptionDPressed () => OptionHandler(EAnswerField.D);
 }

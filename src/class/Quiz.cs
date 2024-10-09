@@ -8,7 +8,7 @@ public static class Quiz
 
     public static void ShowQuestion(this QuizScreen screen, int questionNumber)
     {
-        screen.HideAll();
+        screen.ChangeVisibility(false);
         Answer question = Questions[questionNumber];
 
         foreach(var item in question.Answers)
