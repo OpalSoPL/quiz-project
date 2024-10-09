@@ -1,4 +1,4 @@
-public static class Answer
+public static class Answers
 {
     public static bool CheckAnswer (EAnswerField answer, uint number)
     {
@@ -7,6 +7,6 @@ public static class Answer
 
     public static EAnswerField getCorrectAnswer (uint number)
     {
-        return Quiz.Questions[number].correctAnswer;
+        return Quiz.Questions[number].CorrectAnswer;
     }
 }
