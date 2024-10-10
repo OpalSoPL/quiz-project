@@ -43,6 +43,7 @@ public static class Quiz
         if (Answers.CheckAnswer(answer,currentQuestion))
         {
             QuizScreen.Question.Text = $"answer.{answer}";
+            Global.CorrectAnswers++;
             //todo trigger correct answer particles
             return true;
         }
