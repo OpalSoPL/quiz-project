@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="quiz-project"
-run/main_scene="res://src/scene/quiz_screen/quiz_screen.tscn"
+run/main_scene="res://src/scene/main_menu/mainMenu.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Autoload="*res://src/class/Autoload.cs"
 
 [display]
 

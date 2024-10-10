@@ -9,6 +9,17 @@ public partial class MainMenu : Control
     {
         PlayButton = GetNode<Button>("%PlayButton");
         PlayButton.Pressed += OnPlayPressed;
+
+        var a = GetNode<Autoload>("/root/Autoload");
+        a.Loaded += LateInit;
+    }
+
+    public void LateInit()
+    {
+        if (Global.GoToQuestion is not -1)
+        {
+            OnPlayPressed();
+        }
     }
 
     public void OnPlayPressed()

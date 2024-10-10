@@ -1,14 +1,13 @@
 using Godot;
-using QuizGame.Helpers;
 using System;
 
 public partial class QuizScreen : Control
 {
     public Button OptionA, OptionB, OptionC, OptionD, Next;
     public static RichTextLabel Question {get; private set;}
-    private int _Current = 0;
+    private int _Current = Global.GoToQuestion is not -1 ? Global.GoToQuestion : 0 ;
 
-    public override async void _Ready()
+    public override void _Ready()
     {
         OptionA = GetNode<Button>("%OptionA");
         OptionB = GetNode<Button>("%OptionB");
@@ -23,13 +22,6 @@ public partial class QuizScreen : Control
         OptionC.Pressed += OptionCPressed;
         OptionD.Pressed += OptionDPressed;
         Next.Pressed += NextPressed;
-        QuestionsDeserialize QuestionFile = await QuizGame.Helpers.Json.LoadToFile<QuestionsDeserialize>("res://test.json",true);
-
-        Quiz.ClearQuestions();
-        foreach (var item in QuestionFile.Data)
-        {
-            Quiz.Questions.Add(item.Value);
-        }
 
         Quiz.ShowQuestion(this,_Current);
     }
