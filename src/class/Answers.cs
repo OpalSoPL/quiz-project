@@ -12,6 +12,6 @@ public static class Answers
 
     public static bool isLastQuestion(int number)
     {
-        return number <= Quiz.Questions.Count-1;
+        return number == Quiz.Questions.Count-1;
     }
 }
