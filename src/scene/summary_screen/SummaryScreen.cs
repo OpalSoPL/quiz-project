@@ -15,7 +15,8 @@ public partial class SummaryScreen : Control
 
     public void ShowSummary ()
     {
-        summaryLabel.Text = string.Format ("{0}/{1}",Quiz.Questions.Count,Global.CorrectAnswers);
+        summaryLabel.Text = string.Format (summaryLabel.Text,Global.CorrectAnswers, Quiz.Questions.Count);
+        Visible = !Visible;
     }
 
     public void RetryButtonPressed ()

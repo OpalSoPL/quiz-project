@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bga3lofo8w26j"]
+[gd_scene load_steps=7 format=3 uid="uid://bga3lofo8w26j"]
 
 [ext_resource type="Script" path="res://src/scene/quiz_screen/QuizScreen.cs" id="1_ij28m"]
 [ext_resource type="Texture2D" uid="uid://bm7ui7sinv7p" path="res://src/scene/quiz_screen/assets/background_proto1.png" id="2_xy1d4"]
@@ -6,12 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ba0a8li62es3k" path="res://src/scene/quiz_screen/assets/scene_front.png" id="4_qftui"]
 [ext_resource type="Texture2D" uid="uid://c00xydexyruoh" path="res://src/scene/quiz_screen/assets/curtain.png" id="4_ufcfp"]
 [ext_resource type="PackedScene" uid="uid://wseab1f4tk7w" path="res://src/scene/summary_screen/summary_screen.tscn" id="6_dhsih"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tye3g"]
-load_path = "res://.godot/imported/scene.png-96b2638e44153dd7c2c6137d0784149b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bqn4f"]
-load_path = "res://.godot/imported/scene.png-3650041eb0149713680be4c03d6ce0e7.ctex"
 
 [node name="Quiz_Screen" type="Control"]
 layout_mode = 3
@@ -37,20 +31,6 @@ texture_filter = 1
 position = Vector2(576, 175)
 scale = Vector2(5, 5)
 texture = ExtResource("3_fem1r")
-
-[node name="Scene_old2" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(576, 440)
-scale = Vector2(5, 5)
-texture = SubResource("CompressedTexture2D_tye3g")
-
-[node name="Scene_old" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(566, 98)
-scale = Vector2(5, 5)
-texture = SubResource("CompressedTexture2D_bqn4f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1152, 40)
@@ -98,6 +78,7 @@ autowrap_mode = 2
 
 [node name="Next" type="Button" parent="."]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 0
 offset_left = 942.0
@@ -128,7 +109,9 @@ offset_right = -626.0
 offset_bottom = -74.0
 scale = Vector2(61.9802, 22.6671)
 
-[node name="SummaryScreen" parent="." instance=ExtResource("6_dhsih")]
+[node name="Summary" parent="." instance=ExtResource("6_dhsih")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 offset_left = -182.0
 offset_top = -260.5

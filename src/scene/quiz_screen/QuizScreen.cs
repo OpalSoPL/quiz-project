@@ -6,6 +6,7 @@ public partial class QuizScreen : Control
     public Button OptionA, OptionB, OptionC, OptionD, Next;
     public static RichTextLabel Question {get; private set;}
     private int _Current = Global.GoToQuestion is not -1 ? Global.GoToQuestion : 0 ;
+    public SummaryScreen SummaryScreen;
 
     public override void _Ready()
     {
@@ -16,6 +17,8 @@ public partial class QuizScreen : Control
         Next = GetNode<Button>("%Next");
 
         Question = GetNode<RichTextLabel>("%Question");
+
+        SummaryScreen = GetNode<SummaryScreen>("%Summary");
 
         OptionA.Pressed += OptionAPressed;
         OptionB.Pressed += OptionBPressed;
@@ -47,6 +50,10 @@ public partial class QuizScreen : Control
         if (!Answers.isLastQuestion(_Current))
         {
             Next.Visible = true;
+        }
+        else
+        {
+            SummaryScreen.ShowSummary();
         }
         Quiz.ShowResults(Answer,_Current);
         SetButtonsState(true);
