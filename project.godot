@@ -22,6 +22,8 @@ Autoload="*res://src/class/Autoload.cs"
 
 [display]
 
+window/size/viewport_width=1520
+window/size/viewport_height=855
 window/stretch/mode="canvas_items"
 
 [dotnet]
