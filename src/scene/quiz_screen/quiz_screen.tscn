@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bga3lofo8w26j"]
+[gd_scene load_steps=11 format=3 uid="uid://bga3lofo8w26j"]
 
 [ext_resource type="Script" path="res://src/scene/quiz_screen/QuizScreen.cs" id="1_ij28m"]
 [ext_resource type="Texture2D" uid="uid://bm7ui7sinv7p" path="res://src/scene/quiz_screen/assets/background_proto1.png" id="2_xy1d4"]
 [ext_resource type="Texture2D" uid="uid://c2mafav1pkdo8" path="res://src/scene/quiz_screen/assets/scene.png" id="3_fem1r"]
+[ext_resource type="Script" path="res://src/scene/quiz_screen/Curtain.cs" id="4_nwvvm"]
 [ext_resource type="Texture2D" uid="uid://ba0a8li62es3k" path="res://src/scene/quiz_screen/assets/scene_front.png" id="4_qftui"]
 [ext_resource type="Texture2D" uid="uid://c00xydexyruoh" path="res://src/scene/quiz_screen/assets/curtain.png" id="4_ufcfp"]
 [ext_resource type="PackedScene" uid="uid://wseab1f4tk7w" path="res://src/scene/summary_screen/summary_screen.tscn" id="6_dhsih"]
+[ext_resource type="Texture2D" uid="uid://p77vvf0s55cr" path="res://src/scene/quiz_screen/assets/frontFloor_test.png" id="7_riort"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4wyd"]
+size = Vector2(236, 5.60001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfdqb"]
+size = Vector2(1176, 20)
 
 [node name="Quiz_Screen" type="Control"]
 layout_mode = 3
@@ -88,15 +96,25 @@ offset_bottom = 323.0
 text = "Buttons.Next
 "
 
-[node name="Curtain" type="Sprite2D" parent="."]
+[node name="Curtain" type="CharacterBody2D" parent="."]
 texture_filter = 1
 position = Vector2(611, -493)
 scale = Vector2(5, 5)
+script = ExtResource("4_nwvvm")
+
+[node name="Curtain2" type="Sprite2D" parent="Curtain"]
+texture_filter = 1
+scale = Vector2(1, 1)
 texture = ExtResource("4_ufcfp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Curtain"]
+position = Vector2(-6.59999, 102.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_r4wyd")
 
 [node name="SceneFront" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 300)
+position = Vector2(576, 260)
 scale = Vector2(5, 5)
 texture = ExtResource("4_qftui")
 
@@ -117,3 +135,16 @@ offset_left = -182.0
 offset_top = -260.5
 offset_right = -182.0
 offset_bottom = -260.5
+
+[node name="FrontFloorTest" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 740)
+scale = Vector2(5, 5)
+texture = ExtResource("7_riort")
+
+[node name="FloorColider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorColider"]
+position = Vector2(576, 522)
+shape = SubResource("RectangleShape2D_lfdqb")
+one_way_collision_margin = 0.0
