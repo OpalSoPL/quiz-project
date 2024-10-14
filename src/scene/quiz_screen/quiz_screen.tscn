@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bga3lofo8w26j"]
+[gd_scene load_steps=12 format=3 uid="uid://bga3lofo8w26j"]
 
 [ext_resource type="Script" path="res://src/scene/quiz_screen/QuizScreen.cs" id="1_ij28m"]
 [ext_resource type="Texture2D" uid="uid://bm7ui7sinv7p" path="res://src/scene/quiz_screen/assets/background_proto1.png" id="2_xy1d4"]
@@ -9,11 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://wseab1f4tk7w" path="res://src/scene/summary_screen/summary_screen.tscn" id="6_dhsih"]
 [ext_resource type="Texture2D" uid="uid://p77vvf0s55cr" path="res://src/scene/quiz_screen/assets/frontFloor_test.png" id="7_riort"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4wyd"]
-size = Vector2(236, 5.60001)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5bqcn"]
+a = Vector2(-8, -10)
+b = Vector2(1172, -11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfdqb"]
-size = Vector2(1176, 20)
+size = Vector2(1180.25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4wyd"]
+size = Vector2(236, 5.60001)
 
 [node name="Quiz_Screen" type="Control"]
 layout_mode = 3
@@ -39,6 +43,36 @@ texture_filter = 1
 position = Vector2(576, 175)
 scale = Vector2(5, 5)
 texture = ExtResource("3_fem1r")
+
+[node name="Floor" type="Area2D" parent="Scene"]
+position = Vector2(-115.8, 72)
+scale = Vector2(0.2, 0.2)
+
+[node name="CycleTrigger" type="CollisionShape2D" parent="Scene/Floor"]
+position = Vector2(-3.00006, 2)
+shape = SubResource("SegmentShape2D_5bqcn")
+
+[node name="FloorColider" type="StaticBody2D" parent="Scene/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Floor/FloorColider"]
+position = Vector2(579, 1)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_lfdqb")
+one_way_collision_margin = 0.0
+
+[node name="CeilingStoper" type="StaticBody2D" parent="Scene"]
+position = Vector2(-115.2, -35)
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/CeilingStoper"]
+position = Vector2(573, -9)
+shape = SubResource("RectangleShape2D_lfdqb")
+one_way_collision_margin = 0.0
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1152, 40)
@@ -98,34 +132,24 @@ text = "Buttons.Next
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 texture_filter = 1
-position = Vector2(611, -493)
+position = Vector2(611, -6.10352e-05)
 scale = Vector2(5, 5)
 script = ExtResource("4_nwvvm")
 
 [node name="Curtain2" type="Sprite2D" parent="Curtain"]
 texture_filter = 1
-scale = Vector2(1, 1)
+position = Vector2(0, 0.199999)
 texture = ExtResource("4_ufcfp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Curtain"]
 position = Vector2(-6.59999, 102.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_r4wyd")
 
-[node name="SceneFront" type="Sprite2D" parent="."]
+[node name="SceneFrontWall" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(576, 260)
 scale = Vector2(5, 5)
 texture = ExtResource("4_qftui")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -666.0
-offset_top = -114.0
-offset_right = -626.0
-offset_bottom = -74.0
-scale = Vector2(61.9802, 22.6671)
 
 [node name="Summary" parent="." instance=ExtResource("6_dhsih")]
 unique_name_in_owner = true
@@ -142,9 +166,4 @@ position = Vector2(576, 740)
 scale = Vector2(5, 5)
 texture = ExtResource("7_riort")
 
-[node name="FloorColider" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorColider"]
-position = Vector2(576, 522)
-shape = SubResource("RectangleShape2D_lfdqb")
-one_way_collision_margin = 0.0
+[connection signal="body_entered" from="Scene/Floor" to="Curtain" method="FloorCollision"]
