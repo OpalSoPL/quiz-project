@@ -5,8 +5,9 @@ public partial class QuizScreen : Control
 {
     public Button OptionA, OptionB, OptionC, OptionD, Next;
     public static RichTextLabel Question {get; private set;}
-    private int _Current = Global.GoToQuestion is not -1 ? Global.GoToQuestion : 0 ;
     public SummaryScreen SummaryScreen;
+    private int _current = Global.GoToQuestion is not -1 ? Global.GoToQuestion : 0 ;
+    private Curtain _curtain;
 
     public override void _Ready()
     {
@@ -20,13 +21,15 @@ public partial class QuizScreen : Control
 
         SummaryScreen = GetNode<SummaryScreen>("%Summary");
 
+        _curtain = GetNode<Curtain>("%Curtain");
+
         OptionA.Pressed += OptionAPressed;
         OptionB.Pressed += OptionBPressed;
         OptionC.Pressed += OptionCPressed;
         OptionD.Pressed += OptionDPressed;
         Next.Pressed += NextPressed;
 
-        Quiz.ShowQuestion(this,_Current);
+        Quiz.ShowQuestion(this,_current);
     }
 
     public void SetButtonsState (bool disable)
@@ -45,9 +48,9 @@ public partial class QuizScreen : Control
         OptionD.Visible = Visible;
     }
 
-    public void OptionHandler(EAnswerField Answer)
+    public async void OptionHandler(EAnswerField Answer)
     {
-        if (!Answers.isLastQuestion(_Current))
+        if (!Answers.isLastQuestion(_current))
         {
             Next.Visible = true;
         }
@@ -55,16 +58,20 @@ public partial class QuizScreen : Control
         {
             SummaryScreen.ShowSummary();
         }
-        Quiz.ShowResults(Answer,_Current);
+
+        _curtain.Cycle(1,300);
+        await ToSignal(_curtain,nameof(_curtain.CurtainDown));
+
+        Quiz.ShowResults(Answer,_current);
         SetButtonsState(true);
     }
 
     //Signals Handlers
     public void NextPressed ()
     {
-        _Current++;
+        _current++;
         SetButtonsState(false);
-        Quiz.ShowQuestion(this,_Current);
+        Quiz.ShowQuestion(this,_current);
         Next.Visible = false;
     }
     public void OptionAPressed () => OptionHandler(EAnswerField.A);

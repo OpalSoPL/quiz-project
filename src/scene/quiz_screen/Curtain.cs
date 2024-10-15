@@ -3,7 +3,11 @@ using System;
 
 public partial class Curtain : CharacterBody2D
 {
+    [Signal]
+    public delegate void CurtainDownEventHandler();
+
     private int _waitTime = 0;
+    private float _speed = 100;
     private bool doNotCycle = false;
     public override void _PhysicsProcess(double delta)
     {
@@ -11,10 +15,12 @@ public partial class Curtain : CharacterBody2D
 
     }
 
-    public void Cycle (int wait_time)
+    public void Cycle (int wait_time,float speed)
     {
         _waitTime = wait_time;
-        Velocity=new Vector2(0,100);
+        _speed = speed;
+
+        Velocity=new Vector2(0,_speed);
         doNotCycle = false;
     }
 
@@ -24,8 +30,10 @@ public partial class Curtain : CharacterBody2D
         {
             return;
         }
+
+        EmitSignal(nameof(CurtainDown));
         await ToSignal(GetTree().CreateTimer(_waitTime), SceneTreeTimer.SignalName.Timeout);
-        Velocity=new Vector2(0,-100);
+        Velocity=new Vector2(0,-_speed);
         doNotCycle = true;
     }
 }
