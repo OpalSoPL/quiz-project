@@ -41,7 +41,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "End.Text"
+text = "end.header"
 horizontal_alignment = 1
 
 [node name="SummaryLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -54,4 +54,4 @@ horizontal_alignment = 1
 [node name="RetryButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Retry"
+text = "buttons.retry"

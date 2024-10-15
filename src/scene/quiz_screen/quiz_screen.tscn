@@ -20,27 +20,26 @@ size = Vector2(1180.25, 20)
 size = Vector2(236, 5.60001)
 
 [node name="Quiz_Screen" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 177.0
-offset_top = 99.0
-offset_right = 177.0
-offset_bottom = 99.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ij28m")
 
 [node name="BackgroundCurtain" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(536, 183)
+position = Vector2(735, 298)
 scale = Vector2(5, 5)
 texture = ExtResource("2_xy1d4")
 
 [node name="Scene" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 175)
+position = Vector2(775, 290)
 scale = Vector2(5, 5)
 texture = ExtResource("3_fem1r")
 
@@ -69,70 +68,72 @@ position = Vector2(573, -9)
 shape = SubResource("RectangleShape2D_lfdqb")
 one_way_collision_margin = 0.0
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Interactive_quiz" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interactive_quiz"]
 custom_minimum_size = Vector2(1152, 40)
 layout_mode = 0
-offset_top = 431.0
-offset_right = 1152.0
-offset_bottom = 471.0
+offset_left = 199.0
+offset_top = 546.0
+offset_right = 1351.0
+offset_bottom = 586.0
 alignment = 1
 
-[node name="OptionA" type="Button" parent="HBoxContainer"]
+[node name="OptionA" type="Button" parent="Interactive_quiz/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "OPTION_A"
 
-[node name="OptionB" type="Button" parent="HBoxContainer"]
+[node name="OptionB" type="Button" parent="Interactive_quiz/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "OPTION_B"
 
-[node name="OptionC" type="Button" parent="HBoxContainer"]
+[node name="OptionC" type="Button" parent="Interactive_quiz/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "OPTION_C"
 
-[node name="OptionD" type="Button" parent="HBoxContainer"]
+[node name="OptionD" type="Button" parent="Interactive_quiz/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "OPTION_D
 "
 
-[node name="Question" type="RichTextLabel" parent="."]
+[node name="Question" type="RichTextLabel" parent="Interactive_quiz"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 273.0
-offset_top = 117.0
-offset_right = 873.0
-offset_bottom = 232.0
+offset_left = 472.0
+offset_top = 232.0
+offset_right = 1072.0
+offset_bottom = 347.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget libero ullamcorper, dignissim nunc ut, euismod purus. Sed vitae nulla ipsum. Aliquam magna lorem, eleifend tristique quam ut, tristique condimentum dolor. Duis at accumsan ligula. Etiam eu egestas lorem, quis faucibus lectus. Aliquam ac vehicula ipsum, egestas aliquet ligula. Morbi. "
 scroll_active = false
 autowrap_mode = 2
 
-[node name="Next" type="Button" parent="."]
+[node name="Next" type="Button" parent="Interactive_quiz"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 0
-offset_left = 942.0
-offset_top = 283.0
-offset_right = 1053.0
-offset_bottom = 323.0
-text = "Buttons.Next
-"
+offset_left = 1108.0
+offset_top = 396.0
+offset_right = 1219.0
+offset_bottom = 436.0
+text = "buttons.next"
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 texture_filter = 1
-position = Vector2(611, -6.10352e-05)
+position = Vector2(810, 115)
 scale = Vector2(5, 5)
 script = ExtResource("4_nwvvm")
 
@@ -145,25 +146,24 @@ texture = ExtResource("4_ufcfp")
 position = Vector2(-6.59999, 102.2)
 shape = SubResource("RectangleShape2D_r4wyd")
 
-[node name="SceneFrontWall" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(576, 260)
-scale = Vector2(5, 5)
-texture = ExtResource("4_qftui")
-
 [node name="Summary" parent="." instance=ExtResource("6_dhsih")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-offset_left = -182.0
-offset_top = -260.5
-offset_right = -182.0
-offset_bottom = -260.5
+offset_left = 17.0
+offset_top = -145.5
+offset_right = 17.0
+offset_bottom = -145.5
 
-[node name="FrontFloorTest" type="Sprite2D" parent="."]
+[node name="SceneFrontWall" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(576, 740)
+position = Vector2(775, 375)
 scale = Vector2(5, 5)
+texture = ExtResource("4_qftui")
+
+[node name="FrontFloorTest" type="Sprite2D" parent="SceneFrontWall"]
+texture_filter = 1
+position = Vector2(0, 96)
 texture = ExtResource("7_riort")
 
 [connection signal="body_entered" from="Scene/Floor" to="Curtain" method="FloorCollision"]
