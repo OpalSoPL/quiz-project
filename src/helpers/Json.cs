@@ -7,12 +7,9 @@ using Godot;
 namespace QuizGame.Helpers;
 public static class Json
 {
-    public static async Task<T> LoadToFile <T>(string path, bool isEnginePath = false)
+    public static async Task<T> LoadToFile <T>(string path)
     {
-        if (isEnginePath)
-        {
-            path = ProjectSettings.GlobalizePath(path);
-        }
+        path = ProjectSettings.GlobalizePath(path);
         try
         {
             await using FileStream stream = new FileStream(path,FileMode.Open);

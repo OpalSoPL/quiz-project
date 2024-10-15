@@ -8,9 +8,8 @@ public partial class Autoload : Node
     public override async void _EnterTree()
     {
         SettingsDeserialize settings = await QuizGame.Helpers.Json.LoadToFile<SettingsDeserialize>(
-            !OS.IsDebugBuild() ? OS.GetExecutablePath() : "res://"
-            + "settings.json",
-            OS.IsDebugBuild()
+            (!OS.HasFeature("editor") ? OS.GetExecutablePath().GetBaseDir() : "res:/"
+                )+ "/settings.json"
             );
 
         Global.Debug = settings.Debug;
