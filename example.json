@@ -1,0 +1,205 @@
+{
+    "Version": 1,
+    "Data": {
+        "0": {
+            "Description": "What is the capital of France?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "Paris",
+                "B": "London",
+                "C": "Berlin",
+                "D": "Madrid"
+            }
+        },
+        "1": {
+            "Description": "What is the largest planet in the Solar System?",
+            "CorrectAnswer": 2,
+            "Answers": {
+                "A": "Earth",
+                "B": "Venus",
+                "C": "Jupiter",
+                "D": "Saturn"
+            }
+        },
+        "2": {
+            "Description": "Which element has the chemical symbol 'O'?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "Oxygen",
+                "B": "Gold",
+                "C": "Silver",
+                "D": "Iron"
+            }
+        },
+        "3": {
+            "Description": "What is the speed of light in a vacuum?",
+            "CorrectAnswer": 2,
+            "Answers": {
+                "A": "150,000 km/s",
+                "B": "200,000 km/s",
+                "C": "299,792 km/s",
+                "D": "400,000 km/s"
+            }
+        },
+        "4": {
+            "Description": "Who wrote the play 'Romeo and Juliet'?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "Leo Tolstoy",
+                "B": "William Shakespeare",
+                "C": "Charles Dickens",
+                "D": "Mark Twain"
+            }
+        },
+        "5": {
+            "Description": "What is the smallest prime number?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "2",
+                "B": "3",
+                "C": "5",
+                "D": "7"
+            }
+        },
+        "6": {
+            "Description": "Which ocean is the largest?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "Atlantic Ocean",
+                "B": "Pacific Ocean",
+                "C": "Indian Ocean",
+                "D": "Southern Ocean"
+            }
+        },
+        "7": {
+            "Description": "What is the square root of 64?",
+            "CorrectAnswer": 3,
+            "Answers": {
+                "A": "6",
+                "B": "7",
+                "C": "9",
+                "D": "8"
+            }
+        },
+        "8": {
+            "Description": "Who is known as the father of modern physics?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "Isaac Newton",
+                "B": "Albert Einstein",
+                "C": "Galileo Galilei",
+                "D": "Niels Bohr"
+            }
+        },
+        "9": {
+            "Description": "What is the longest river in the world?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "Nile",
+                "B": "Amazon",
+                "C": "Yangtze",
+                "D": "Mississippi"
+            }
+        },
+        "10": {
+            "Description": "In which year did World War II end?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "1943",
+                "B": "1945",
+                "C": "1947",
+                "D": "1950"
+            }
+        },
+        "11": {
+            "Description": "What is the chemical formula for water?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "CO2",
+                "B": "H2O",
+                "C": "O2",
+                "D": "NaCl"
+            }
+        },
+        "12": {
+            "Description": "Who painted the Mona Lisa?",
+            "CorrectAnswer": 2,
+            "Answers": {
+                "A": "Vincent van Gogh",
+                "B": "Pablo Picasso",
+                "C": "Leonardo da Vinci",
+                "D": "Claude Monet"
+            }
+        },
+        "13": {
+            "Description": "What is the hardest natural substance on Earth?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "Diamond",
+                "B": "Gold",
+                "C": "Iron",
+                "D": "Granite"
+            }
+        },
+        "14": {
+            "Description": "How many continents are there on Earth?",
+            "CorrectAnswer": 2,
+            "Answers": {
+                "A": "5",
+                "B": "6",
+                "C": "7",
+                "D": "8"
+            }
+        },
+        "15": {
+            "Description": "What is the largest mammal in the world?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "Elephant",
+                "B": "Blue Whale",
+                "C": "Giraffe",
+                "D": "Hippopotamus"
+            }
+        },
+        "16": {
+            "Description": "Which country is known as the Land of the Rising Sun?",
+            "CorrectAnswer": 2,
+            "Answers": {
+                "A": "China",
+                "B": "South Korea",
+                "C": "Japan",
+                "D": "Thailand"
+            }
+        },
+        "17": {
+            "Description": "Which element has the highest melting point?",
+            "CorrectAnswer": 3,
+            "Answers": {
+                "A": "Iron",
+                "B": "Carbon",
+                "C": "Platinum",
+                "D": "Tungsten"
+            }
+        },
+        "18": {
+            "Description": "What is the tallest mountain in the world?",
+            "CorrectAnswer": 0,
+            "Answers": {
+                "A": "Mount Everest",
+                "B": "K2",
+                "C": "Kangchenjunga",
+                "D": "Lhotse"
+            }
+        },
+        "19": {
+            "Description": "Who invented the telephone?",
+            "CorrectAnswer": 1,
+            "Answers": {
+                "A": "Thomas Edison",
+                "B": "Alexander Graham Bell",
+                "C": "Nikola Tesla",
+                "D": "Guglielmo Marconi"
+            }
+        }
+    }
+}
