@@ -5,6 +5,7 @@
 # temp / local ignores
 /out/
 *~
+appSettings.json
 
 # Godot 4+ specific ignores
 .godot/
