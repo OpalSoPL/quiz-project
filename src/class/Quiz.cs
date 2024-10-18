@@ -34,7 +34,7 @@ public static class Quiz
             }
         }
 
-        QuizScreen.Question.Text = question.Description;
+        QuizScreen.Question.Text = "[center]"+question.Description+"[/center]";
     }
 
     public static bool ShowResults(EAnswerField answer, int currentQuestion)
