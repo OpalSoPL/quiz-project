@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bga3lofo8w26j"]
+[gd_scene load_steps=14 format=3 uid="uid://bga3lofo8w26j"]
 
 [ext_resource type="Script" path="res://src/scene/quiz_screen/QuizScreen.cs" id="1_ij28m"]
 [ext_resource type="Texture2D" uid="uid://bm7ui7sinv7p" path="res://src/scene/quiz_screen/assets/background_proto1.png" id="2_xy1d4"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://src/scene/quiz_screen/Curtain.cs" id="4_nwvvm"]
 [ext_resource type="Texture2D" uid="uid://ba0a8li62es3k" path="res://src/scene/quiz_screen/assets/scene_front.png" id="4_qftui"]
 [ext_resource type="Texture2D" uid="uid://c00xydexyruoh" path="res://src/scene/quiz_screen/assets/curtain.png" id="4_ufcfp"]
+[ext_resource type="Texture2D" uid="uid://c63xtbogq3j8s" path="res://src/scene/quiz_screen/assets/miniBackground.png" id="5_xa136"]
 [ext_resource type="PackedScene" uid="uid://wseab1f4tk7w" path="res://src/scene/summary_screen/summary_screen.tscn" id="6_dhsih"]
 [ext_resource type="Texture2D" uid="uid://p77vvf0s55cr" path="res://src/scene/quiz_screen/assets/frontFloor_test.png" id="7_riort"]
+[ext_resource type="Texture2D" uid="uid://cwu6k7gdsv2h1" path="res://src/scene/quiz_screen/assets/QuestionBackground.png" id="9_qccja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ymsu"]
 size = Vector2(1143.5, 2.5)
@@ -109,26 +111,57 @@ layout_mode = 2
 text = "OPTION_D
 "
 
-[node name="Question" type="RichTextLabel" parent="Interactive_quiz"]
-unique_name_in_owner = true
+[node name="CenterContainer" type="CenterContainer" parent="Interactive_quiz"]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 232.0
-offset_right = 1072.0
-offset_bottom = 347.0
+offset_left = 280.0
+offset_top = 118.0
+offset_right = 1272.0
+offset_bottom = 518.0
+
+[node name="BezTytułu" type="Sprite2D" parent="Interactive_quiz/CenterContainer"]
+texture_filter = 1
+position = Vector2(480, 99)
+scale = Vector2(5, 5)
+texture = ExtResource("9_qccja")
+
+[node name="Question" type="RichTextLabel" parent="Interactive_quiz/CenterContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+bbcode_enabled = true
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget libero ullamcorper, dignissim nunc ut, euismod purus. Sed vitae nulla ipsum. Aliquam magna lorem, eleifend tristique quam ut, tristique condimentum dolor. Duis at accumsan ligula. Etiam eu egestas lorem, quis faucibus lectus. Aliquam ac vehicula ipsum, egestas aliquet ligula. Morbi. "
+fit_content = true
 scroll_active = false
 autowrap_mode = 2
 
-[node name="Next" type="Button" parent="Interactive_quiz"]
+[node name="Next" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -15.0
+offset_top = 6.0
+offset_right = 25.0
+offset_bottom = 46.0
+
+[node name="Mini" type="TextureRect" parent="Next"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 17.0
+offset_right = 1185.0
+offset_bottom = 103.0
+scale = Vector2(5, 5)
+texture = ExtResource("5_xa136")
+
+[node name="Next" type="Button" parent="Next"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 0
-offset_left = 1108.0
-offset_top = 396.0
-offset_right = 1219.0
-offset_bottom = 436.0
+offset_left = 1152.0
+offset_top = 399.0
+offset_right = 1317.0
+offset_bottom = 439.0
 text = "buttons.next"
+flat = true
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
