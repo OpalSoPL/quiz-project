@@ -1,6 +1,6 @@
 keys,en,pl
 name.translated,Project: Quiz,Projekt: Quiz
-copyright.text,(C) Copyright 2024 OpalSoPL\n Version: 0.1.0_14102024, (C) Copyright 2024 OpalSoPL\n Version: 0.1.0_14102024
+copyright.text,(C) Copyright 2024 OpalSoPL\n Version: 0.1.0_15102024--test1, (C) Copyright 2024 OpalSoPL\n Version: 0.1.0_15102024--test1
 
 buttons.play,Play,Rozpocznij
 buttons.retry,Try again,Spróbuj ponownie
@@ -9,7 +9,7 @@ buttons.next,Next question,Następne pytanie
 end.header,Game Over,Koniec Gry
 end.result,Correct answers: ,Poprawne odpowiedzi: 
 
-answer.header,Correct answer is...\n, Poprawna odpowiedz to...\n,
+answer.header,Correct answer is...\n, Poprawna odpowiedz to...\n
 answer.status, so your anwser was , więc twoja odpowiedź była 
 answer.status.correct,correct,poprawna
 answer.status.incorrect,incorrect,niepoprawna

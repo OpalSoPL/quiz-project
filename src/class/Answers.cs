@@ -10,6 +10,11 @@ public static class Answers
         return Quiz.Questions[number].CorrectAnswer;
     }
 
+    public static string GetAnswerDescription (int number, EAnswerField answer)
+    {
+        return Quiz.Questions[number].Answers[answer];
+    }
+
     public static bool isLastQuestion(int number)
     {
         return number == Quiz.Questions.Count-1;

@@ -38,6 +38,7 @@ public partial class Autoload : Node
             GetTree().Quit();
         }
 
+        Global.Tree = GetTree();
         Global.Debug = settings.Debug;
         Global.QuestionFile = settings.Question_file;
         Global.GoToQuestion = settings.Run_from_question;

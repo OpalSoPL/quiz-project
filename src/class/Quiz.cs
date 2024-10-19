@@ -39,17 +39,31 @@ public static class Quiz
 
     public static bool ShowResults(EAnswerField answer, int currentQuestion)
     {
+        var tree = Global.Tree;
+        string TextFormat = $"[center]{tree.Tr("answer.header")} {{0}} {tree.Tr("answer.status")} {{1}}[/center]";
         GD.Print(answer,currentQuestion);
         if (Answers.CheckAnswer(answer,currentQuestion))
         {
-            QuizScreen.Question.Text = $"answer.{answer}";
+            QuizScreen.Question.Text = string.Format(
+                    TextFormat,
+                    Answers.GetAnswerDescription(currentQuestion,answer),
+                    $"[color=#AAFF00]{tree.Tr("answer.status.correct")}[/color]"
+                );
+
             Global.CorrectAnswers++;
-            //todo trigger correct answer particles
+            //todo trigger correct answer effect
             return true;
         }
 
-        QuizScreen.Question.Text = $"answer.{Answers.GetCorrectAnswer(currentQuestion)}";
-        //todo trigger wrong answer particles
+        QuizScreen.Question.Text = string.Format(
+                    TextFormat,
+                    Answers.GetAnswerDescription(
+                        currentQuestion,
+                        Answers.GetCorrectAnswer(currentQuestion)
+                        ),
+                    $"[color=ff0013]{tree.Tr("answer.status.incorrect")}[/color]"
+                );
+        //todo trigger wrong answer effect
         return false;
     }
 

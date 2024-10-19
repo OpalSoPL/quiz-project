@@ -118,7 +118,7 @@ offset_top = 118.0
 offset_right = 1272.0
 offset_bottom = 518.0
 
-[node name="BezTytułu" type="Sprite2D" parent="Interactive_quiz/CenterContainer"]
+[node name="QuestionBackground" type="Sprite2D" parent="Interactive_quiz/CenterContainer"]
 texture_filter = 1
 position = Vector2(480, 99)
 scale = Vector2(5, 5)
@@ -165,6 +165,7 @@ flat = true
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 position = Vector2(810, 115)
 scale = Vector2(5, 5)
@@ -198,17 +199,5 @@ texture = ExtResource("4_qftui")
 texture_filter = 1
 position = Vector2(0, 96)
 texture = ExtResource("7_riort")
-
-[node name="WIP_label" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 408.0
-offset_top = 783.0
-offset_right = 751.0
-offset_bottom = 806.0
-scale = Vector2(2, 2)
-bbcode_enabled = true
-text = "Prace w toku. Wszystko może się zmienić"
-fit_content = true
 
 [connection signal="body_entered" from="Scene/Floor" to="Curtain" method="FloorCollision"]
