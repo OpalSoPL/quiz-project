@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class QuizScreen : Control
 {
@@ -27,7 +28,9 @@ public partial class QuizScreen : Control
         OptionB.Pressed += OptionBPressed;
         OptionC.Pressed += OptionCPressed;
         OptionD.Pressed += OptionDPressed;
-        Next.Pressed += NextPressed;
+        Next.Pressed += NextPressedAsync;
+
+        _curtain.Move(EMoveType.Up);
 
         Quiz.ShowQuestion(this,_current);
     }
@@ -61,22 +64,26 @@ public partial class QuizScreen : Control
 
         SetButtonsState(true);
 
-        _curtain.Cycle(1,500);
-        await ToSignal(_curtain,nameof(_curtain.CurtainDown));
+        _curtain.Move(EMoveType.Cycle);
+
+        await ToSignal(_curtain, "MoveEnded");
 
         Quiz.ShowResults(Answer,_current);
         GetNode<Control>("%NextNode").Visible = true;
     }
 
     //Signals Handlers
-    public void NextPressed ()
+    public async void NextPressedAsync ()
     {
-        _curtain.Cycle(1,500); //todo await
+        _curtain.Move(EMoveType.Cycle);
+
+        await ToSignal(_curtain, "MoveEnded");
         _current++;
         SetButtonsState(false);
         Quiz.ShowQuestion(this,_current);
         GetNode<Control>("%NextNode").Visible = false;
     }
+
     public void OptionAPressed () => OptionHandler(EAnswerField.A);
     public void OptionBPressed () => OptionHandler(EAnswerField.B);
     public void OptionCPressed () => OptionHandler(EAnswerField.C);

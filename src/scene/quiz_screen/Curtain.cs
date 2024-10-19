@@ -1,39 +1,63 @@
 using Godot;
 using System;
 
-public partial class Curtain : CharacterBody2D
+public partial class Curtain : TextureRect
 {
+    [Export]
+    public float Movement_Time = 2f;
     [Signal]
-    public delegate void CurtainDownEventHandler();
+    public delegate void MoveEndedEventHandler(int type);
+    private readonly Vector2 _bottomPosition = new (0,-400);
+    private readonly Vector2 _topPosition = new (0,-900);
+    private Tween _tween;
 
-    private int _waitTime = 0;
-    private float _speed = 500;
-    private bool doNotCycle = false;
-    public override void _PhysicsProcess(double delta)
+    public void ResetTween()
     {
-        MoveAndSlide();
-
+        _tween = GetTree().CreateTween();
     }
 
-    public void Cycle (int wait_time,float speed)
+    public void Move(EMoveType type, double delay = 1d)
     {
-        _waitTime = wait_time;
-        _speed = speed;
-
-        Velocity=new Vector2(0,_speed);
-        doNotCycle = false;
-    }
-
-    public async void FloorCollision(Node2D body)
-    {
-        if (doNotCycle)
+        ResetTween();
+        switch (type)
         {
-            return;
+            case EMoveType.Cycle:
+                Cycle(delay);
+                break;
+            case EMoveType.Down:
+                GoDown();
+                break;
+            case EMoveType.Up:
+                GoUp();
+                break;
         }
+    }
 
-        EmitSignal(nameof(CurtainDown));
-        await ToSignal(GetTree().CreateTimer(_waitTime), SceneTreeTimer.SignalName.Timeout);
-        Velocity=new Vector2(0,-_speed);
-        doNotCycle = true;
+    public void Cycle(double delay)
+    {
+        _tween.TweenProperty(this,"position",_bottomPosition,Movement_Time);
+
+        _tween.TweenCallback(Callable.From(() => _moveEnd(EMoveType.Cycle)));
+
+        _tween.Chain()
+        .TweenProperty(this,"position",_topPosition,Movement_Time)
+        .SetDelay(delay);
+    }
+
+    public void GoDown()
+    {
+        _tween.TweenProperty(this,"position",_bottomPosition,Movement_Time);
+        _tween.TweenCallback(Callable.From(() => _moveEnd(EMoveType.Down)));
+    }
+
+    public void GoUp()
+    {
+        _tween.TweenProperty(this,"position",_topPosition,Movement_Time);
+        _tween.TweenCallback(Callable.From(() => _moveEnd(EMoveType.Up)));
+    }
+
+    private void _moveEnd(EMoveType type)
+    {
+        EmitSignal(nameof(MoveEnded),(int)type);
     }
 }
