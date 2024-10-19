@@ -65,15 +65,17 @@ public partial class QuizScreen : Control
         await ToSignal(_curtain,nameof(_curtain.CurtainDown));
 
         Quiz.ShowResults(Answer,_current);
+        GetNode<Control>("%NextNode").Visible = true;
     }
 
     //Signals Handlers
     public void NextPressed ()
     {
+        _curtain.Cycle(1,500); //todo await
         _current++;
         SetButtonsState(false);
         Quiz.ShowQuestion(this,_current);
-        Next.Visible = false;
+        GetNode<Control>("%NextNode").Visible = false;
     }
     public void OptionAPressed () => OptionHandler(EAnswerField.A);
     public void OptionBPressed () => OptionHandler(EAnswerField.B);
