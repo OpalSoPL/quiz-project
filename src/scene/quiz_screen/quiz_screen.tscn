@@ -26,46 +26,52 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ij28m")
 
-[node name="BackgroundCurtain" type="Sprite2D" parent="."]
+[node name="BackgroundCurtain" type="TextureRect" parent="."]
 texture_filter = 1
-position = Vector2(735, 298)
+layout_mode = 0
+offset_left = -98.0
+offset_top = 116.0
+offset_right = 270.0
+offset_bottom = 189.0
 scale = Vector2(5, 5)
 texture = ExtResource("2_xy1d4")
 
-[node name="Scene" type="Sprite2D" parent="."]
+[node name="Scene" type="TextureRect" parent="."]
 texture_filter = 1
-position = Vector2(775, 290)
+layout_mode = 0
+offset_left = 180.0
+offset_top = -185.0
+offset_right = 418.0
+offset_bottom = 5.0
 scale = Vector2(5, 5)
 texture = ExtResource("3_fem1r")
 
 [node name="Floor" type="Area2D" parent="Scene"]
-position = Vector2(-115.8, 72)
+position = Vector2(-0.600001, 59)
 scale = Vector2(0.2, 0.2)
 
 [node name="CycleTrigger" type="CollisionShape2D" parent="Scene/Floor"]
-position = Vector2(592, -8)
+position = Vector2(611, 527)
 shape = SubResource("RectangleShape2D_8ymsu")
 
 [node name="FloorColider" type="StaticBody2D" parent="Scene/Floor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Floor/FloorColider"]
-position = Vector2(579, 1)
+position = Vector2(593, 537)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_lfdqb")
 one_way_collision_margin = 0.0
 
 [node name="CeilingStoper" type="StaticBody2D" parent="Scene"]
-position = Vector2(-115.2, -35)
+position = Vector2(4.4, 167)
 scale = Vector2(0.2, 0.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/CeilingStoper"]
-position = Vector2(573, -9)
+position = Vector2(574, -542)
 shape = SubResource("RectangleShape2D_lfdqb")
 one_way_collision_margin = 0.0
 
@@ -135,14 +141,14 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 2
 
-[node name="Next" type="Control" parent="."]
+[node name="NextNode" type="Control" parent="."]
+unique_name_in_owner = true
 anchors_preset = 0
-offset_left = -15.0
-offset_top = 6.0
-offset_right = 25.0
+offset_top = 5.99999
+offset_right = 40.0
 offset_bottom = 46.0
 
-[node name="Mini" type="TextureRect" parent="Next"]
+[node name="Mini" type="TextureRect" parent="NextNode"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1152.0
@@ -152,7 +158,7 @@ offset_bottom = 103.0
 scale = Vector2(5, 5)
 texture = ExtResource("5_xa136")
 
-[node name="Next" type="Button" parent="Next"]
+[node name="Next" type="Button" parent="NextNode"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 0
@@ -165,6 +171,7 @@ flat = true
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 position = Vector2(810, 115)
 scale = Vector2(5, 5)
@@ -188,15 +195,24 @@ offset_top = -145.5
 offset_right = 17.0
 offset_bottom = -145.5
 
-[node name="SceneFrontWall" type="Sprite2D" parent="."]
+[node name="SceneFrontWall" type="TextureRect" parent="."]
 texture_filter = 1
-position = Vector2(775, 375)
+layout_mode = 0
+offset_left = -135.0
+offset_top = -80.0
+offset_right = 229.0
+offset_bottom = 102.0
 scale = Vector2(5, 5)
+mouse_filter = 2
 texture = ExtResource("4_qftui")
 
-[node name="FrontFloorTest" type="Sprite2D" parent="SceneFrontWall"]
+[node name="FrontFloorTest" type="TextureRect" parent="SceneFrontWall"]
 texture_filter = 1
-position = Vector2(0, 96)
+layout_mode = 0
+offset_left = 0.200003
+offset_top = 169.2
+offset_right = 364.2
+offset_bottom = 206.2
 texture = ExtResource("7_riort")
 
 [connection signal="body_entered" from="Scene/Floor" to="Curtain" method="FloorCollision"]
