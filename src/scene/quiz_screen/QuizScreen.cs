@@ -59,11 +59,12 @@ public partial class QuizScreen : Control
             SummaryScreen.ShowSummary();
         }
 
-        _curtain.Cycle(1,300);
+        SetButtonsState(true);
+
+        _curtain.Cycle(1,500);
         await ToSignal(_curtain,nameof(_curtain.CurtainDown));
 
         Quiz.ShowResults(Answer,_current);
-        SetButtonsState(true);
     }
 
     //Signals Handlers

@@ -7,7 +7,7 @@ public partial class Curtain : CharacterBody2D
     public delegate void CurtainDownEventHandler();
 
     private int _waitTime = 0;
-    private float _speed = 100;
+    private float _speed = 500;
     private bool doNotCycle = false;
     public override void _PhysicsProcess(double delta)
     {

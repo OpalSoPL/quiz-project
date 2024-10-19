@@ -165,7 +165,6 @@ flat = true
 
 [node name="Curtain" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 position = Vector2(810, 115)
 scale = Vector2(5, 5)
