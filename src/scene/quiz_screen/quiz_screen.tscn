@@ -156,6 +156,16 @@ offset_top = -145.5
 offset_right = 17.0
 offset_bottom = -145.5
 
+[node name="FrontFloorTest" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -135.0
+offset_top = 765.0
+offset_right = 229.0
+offset_bottom = 784.0
+scale = Vector2(5, 5)
+texture = ExtResource("7_riort")
+
 [node name="SceneFrontWall" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0
@@ -166,12 +176,3 @@ offset_bottom = 102.0
 scale = Vector2(5, 5)
 mouse_filter = 2
 texture = ExtResource("4_qftui")
-
-[node name="FrontFloorTest" type="TextureRect" parent="SceneFrontWall"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 0.200003
-offset_top = 169.2
-offset_right = 364.2
-offset_bottom = 206.2
-texture = ExtResource("7_riort")
