@@ -54,4 +54,23 @@ public partial class Autoload : Node
         EmitSignal(nameof(Loaded));
 
     }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventKey key)
+        {
+            if (key.Keycode == Key.F11 && key.IsPressed())
+            {
+                switch (DisplayServer.WindowGetMode()){
+                    case DisplayServer.WindowMode.Windowed:
+                        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+                        break;
+                    case DisplayServer.WindowMode.Fullscreen:
+                        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+                        break;
+                }
+            }
+        }
+    }
+
 }
