@@ -15,13 +15,17 @@ public partial class SummaryScreen : Control
 
     public void ShowSummary ()
     {
-        summaryLabel.Text = string.Format (summaryLabel.Text,Global.CorrectAnswers, Quiz.Questions.Count);
+        summaryLabel.Text = string.Format (
+                summaryLabel.Text,Global.CorrectAnswers,
+                Global.GoToQuestion >= 0 ?
+                    Quiz.Questions.Count - Global.GoToQuestion
+                    : Quiz.Questions.Count
+            );
         Visible = !Visible;
     }
 
     public void RetryButtonPressed ()
     {
-        //todo curtain drop
         GetTree().ChangeSceneToFile("res://src/scene/quiz_screen/quiz_screen.tscn");
     }
 }

@@ -53,14 +53,11 @@ public partial class QuizScreen : Control
 
     public async void OptionHandler(EAnswerField Answer)
     {
-        if (!Answers.isLastQuestion(_current))
+        if (Answers.isLastQuestion(_current))
         {
-            Next.Visible = true;
+            Next.Text = "buttons.end";
         }
-        else
-        {
-            SummaryScreen.ShowSummary();
-        }
+        Next.Visible = true;
 
         SetButtonsState(true);
 
@@ -75,9 +72,18 @@ public partial class QuizScreen : Control
     //Signals Handlers
     public async void NextPressedAsync ()
     {
+        if (Answers.isLastQuestion(_current))
+        {
+            _curtain.Move(EMoveType.Down);
+            await ToSignal(_curtain, nameof(_curtain.MoveEnded));
+            SummaryScreen.ShowSummary();
+            return;
+        }
+
         _curtain.Move(EMoveType.Cycle);
 
         await ToSignal(_curtain, "MoveEnded");
+
         _current++;
         SetButtonsState(false);
         Quiz.ShowQuestion(this,_current);
