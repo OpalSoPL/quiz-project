@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bga3lofo8w26j"]
+[gd_scene load_steps=13 format=3 uid="uid://bga3lofo8w26j"]
 
 [ext_resource type="Script" path="res://src/scene/quiz_screen/QuizScreen.cs" id="1_ij28m"]
+[ext_resource type="FontFile" uid="uid://dqvbfa4iiel5s" path="res://assets/PixelOperator.ttf" id="1_qgp1x"]
 [ext_resource type="Texture2D" uid="uid://bm7ui7sinv7p" path="res://src/scene/quiz_screen/assets/background_proto1.png" id="2_xy1d4"]
 [ext_resource type="Texture2D" uid="uid://c2mafav1pkdo8" path="res://src/scene/quiz_screen/assets/scene.png" id="3_fem1r"]
 [ext_resource type="Script" path="res://src/scene/quiz_screen/Curtain.cs" id="4_nwvvm"]
@@ -11,6 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://p77vvf0s55cr" path="res://src/scene/quiz_screen/assets/frontFloor_test.png" id="7_riort"]
 [ext_resource type="Texture2D" uid="uid://cwu6k7gdsv2h1" path="res://src/scene/quiz_screen/assets/QuestionBackground.png" id="9_qccja"]
 
+[sub_resource type="Theme" id="Theme_ghek7"]
+Button/font_sizes/font_size = 23
+Button/fonts/font = ExtResource("1_qgp1x")
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_qgp1x")
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("1_qgp1x")
+
 [node name="Quiz_Screen" type="Control"]
 clip_contents = true
 layout_mode = 3
@@ -19,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_ghek7")
 script = ExtResource("1_ij28m")
 
 [node name="BackgroundCurtain" type="TextureRect" parent="."]

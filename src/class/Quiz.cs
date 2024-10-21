@@ -40,7 +40,8 @@ public static class Quiz
     public static bool ShowResults(EAnswerField answer, int currentQuestion)
     {
         var tree = Global.Tree;
-        string TextFormat = $"[center]{tree.Tr("answer.header")} {{0}} {tree.Tr("answer.status")} {{1}}[/center]";
+        string TextFormat = $"[center]{tree.Tr("answer.header")}{{0}}{tree.Tr("answer.status")}{{1}}[/center]";
+
         GD.Print(answer,currentQuestion);
         if (Answers.CheckAnswer(answer,currentQuestion))
         {
