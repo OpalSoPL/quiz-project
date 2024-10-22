@@ -65,7 +65,7 @@ Points to the correct answer.
 
 **example**:
 
-```json
+```
 [...]
     "0": {
         [...]
@@ -73,7 +73,7 @@ Points to the correct answer.
         "Answers": {
                 "A": "Something A",
                 "B": "Something B",
-                "C": "Something C", //<-- correct Answer
+                "C": "Something C", <-- correct Answer
                 "D": "Something D"
             }
     }
